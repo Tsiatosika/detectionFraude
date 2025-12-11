@@ -1,0 +1,85 @@
+[
+  {
+    "id": "TXN001",
+    "client_id": "C001",
+    "montant": 45.5,
+    "date": "2025-12-10",
+    "heure": "10:30",
+    "lieu": "Paris",
+    "pays": "France",
+    "type": "Achat en magasin",
+    "marchand": "Carrefour",
+    "status": "normal",
+    "score": 0,
+    "rules": []
+  },
+  {
+    "id": "TXN002",
+    "client_id": "C001",
+    "montant": 2500,
+    "date": "2025-12-10",
+    "heure": "14:45",
+    "lieu": "Tokyo",
+    "pays": "Japon",
+    "type": "Achat en ligne",
+    "marchand": "Electronics Store",
+    "status": "frauduleux",
+    "score": 75,
+    "rules": [
+      {
+        "name": "Montant élevé",
+        "description": "2500€ > 360€",
+        "points": 30
+      },
+      {
+        "name": "Pays inhabituel",
+        "description": "Japon vs France",
+        "points": 20
+      }
+    ]
+  },
+  {
+    "id": "TXN003",
+    "client_id": "C002",
+    "montant": 150,
+    "date": "2025-12-10",
+    "heure": "09:15",
+    "lieu": "Lyon",
+    "pays": "France",
+    "type": "Restaurant",
+    "marchand": "Le Bistrot",
+    "status": "normal",
+    "score": 0,
+    "rules": []
+  },
+  {
+    "id": "TXN004",
+    "client_id": "C003",
+    "montant": 11150,
+    "date": "2025-12-11",
+    "heure": "09:04",
+    "lieu": "Antsirabe",
+    "pays": "France",
+    "type": "Carburant",
+    "marchand": "Marchand",
+    "status": "frauduleux",
+    "score": 70,
+    "rules": [
+      {
+        "name": "Montant élevé",
+        "description": "11150€ > 600.00€ (3x moyenne)",
+        "points": 30
+      },
+      {
+        "name": "Lieu inhabituel",
+        "description": "Transaction à Antsirabe (lieux habituels: Marseille)",
+        "points": 15
+      },
+      {
+        "name": "Dépassement limite",
+        "description": "11150€ dépasse la limite habituelle de 600€",
+        "points": 25
+      }
+    ]
+  }
+]

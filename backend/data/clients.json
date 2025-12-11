@@ -1,0 +1,35 @@
+[
+  {
+    "client_id": "C001",
+    "nom": "Jean Dupont",
+    "email": "jean.dupont@email.com",
+    "montant_moyen": 120.00,
+    "montant_max_habituel": 500.00,
+    "frequence_moyenne": 10,
+    "lieux_habituels": ["Paris", "Lyon"],
+    "pays_habituel": "France",
+    "historique_fraudes": []
+  },
+  {
+    "client_id": "C002",
+    "nom": "Marie Martin",
+    "email": "marie.martin@email.com",
+    "montant_moyen": 85.00,
+    "montant_max_habituel": 300.00,
+    "frequence_moyenne": 15,
+    "lieux_habituels": ["Lyon", "Grenoble"],
+    "pays_habituel": "France",
+    "historique_fraudes": []
+  },
+  {
+    "client_id": "C003",
+    "nom": "Pierre Dubois",
+    "email": "pierre.dubois@email.com",
+    "montant_moyen": 200.00,
+    "montant_max_habituel": 600.00,
+    "frequence_moyenne": 8,
+    "lieux_habituels": ["Marseille"],
+    "pays_habituel": "France",
+    "historique_fraudes": []
+  }
+]
