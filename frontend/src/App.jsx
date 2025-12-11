@@ -7,6 +7,7 @@ import FilterBar from './components/FilterBar';
 import TransactionForm from './components/TransactionForm';
 import TransactionList from './components/TransactionList';
 import TransactionDetail from './components/TransactionDetail';
+import ClientDetail from './components/ClientDetail';
 
 export default function App() {
   const [transactions, setTransactions] = useState([]);
@@ -15,6 +16,7 @@ export default function App() {
   const [filter, setFilter] = useState('all');
   const [showForm, setShowForm] = useState(false);
   const [selectedTransaction, setSelectedTransaction] = useState(null);
+  const [selectedClient, setSelectedClient] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -66,7 +68,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
@@ -89,13 +90,9 @@ export default function App() {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Statistiques */}
         <Statistics statistics={statistics} />
-        
-        {/* NOUVEAU : Graphiques et Visualisations */}
         <Charts transactions={transactions} />
         
-        {/* Formulaire de nouvelle transaction */}
         {showForm && (
           <TransactionForm
             clients={clients}
@@ -104,25 +101,32 @@ export default function App() {
           />
         )}
 
-        {/* Barre de filtres */}
         <FilterBar 
           filter={filter} 
           setFilter={setFilter} 
           count={filteredTransactions.length} 
         />
 
-        {/* Liste des transactions */}
         <TransactionList 
           transactions={filteredTransactions}
           onSelectTransaction={setSelectedTransaction}
+          onSelectClient={setSelectedClient}
+          clients={clients}
         />
       </div>
 
-      {/* Modal de détails de transaction */}
       {selectedTransaction && (
         <TransactionDetail
           transaction={selectedTransaction}
           onClose={() => setSelectedTransaction(null)}
+        />
+      )}
+
+      {selectedClient && (
+        <ClientDetail
+          client={selectedClient}
+          transactions={transactions}
+          onClose={() => setSelectedClient(null)}
         />
       )}
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { CheckCircle, AlertTriangle, AlertCircle } from 'lucide-react';
 
-export default function TransactionList({ transactions, onSelectTransaction }) {
+export default function TransactionList({ transactions, onSelectTransaction, onSelectClient, clients }) {
   const getStatusColor = (status) => {
     switch (status) {
       case 'normal': return 'bg-green-100 text-green-800';
@@ -17,6 +17,13 @@ export default function TransactionList({ transactions, onSelectTransaction }) {
       case 'suspect': return <AlertTriangle className="w-5 h-5" />;
       case 'frauduleux': return <AlertCircle className="w-5 h-5" />;
       default: return null;
+    }
+  };
+
+  const handleClientClick = (clientId) => {
+    const client = clients.find(c => c.client_id === clientId);
+    if (client && onSelectClient) {
+      onSelectClient(client);
     }
   };
 
@@ -40,7 +47,15 @@ export default function TransactionList({ transactions, onSelectTransaction }) {
             {transactions.map(txn => (
               <tr key={txn.id} className="hover:bg-gray-50 transition">
                 <td className="px-6 py-4 text-sm font-medium text-gray-900">{txn.id}</td>
-                <td className="px-6 py-4 text-sm text-gray-600">{txn.client_id}</td>
+                <td className="px-6 py-4 text-sm">
+                  <button
+                    onClick={() => handleClientClick(txn.client_id)}
+                    className="text-blue-600 hover:text-blue-800 font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded px-1"
+                    title="Voir les détails du client"
+                  >
+                    {txn.client_id}
+                  </button>
+                </td>
                 <td className="px-6 py-4 text-sm font-semibold text-gray-900">{txn.montant.toFixed(2)}€</td>
                 <td className="px-6 py-4 text-sm text-gray-600">{txn.lieu}, {txn.pays}</td>
                 <td className="px-6 py-4 text-sm text-gray-600">{txn.date} {txn.heure}</td>
@@ -62,7 +77,7 @@ export default function TransactionList({ transactions, onSelectTransaction }) {
                 <td className="px-6 py-4">
                   <button
                     onClick={() => onSelectTransaction(txn)}
-                    className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+                    className="text-blue-600 hover:text-blue-800 text-sm font-medium hover:underline"
                   >
                     Détails
                   </button>
