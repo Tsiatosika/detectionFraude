@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Shield, Plus } from 'lucide-react';
 import { api } from './services/api';
 import Statistics from './components/Statistics';
+import Charts from './components/Charts';
 import FilterBar from './components/FilterBar';
 import TransactionForm from './components/TransactionForm';
 import TransactionList from './components/TransactionList';
@@ -65,6 +66,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Header */}
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
@@ -87,8 +89,13 @@ export default function App() {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 py-8">
+        {/* Statistiques */}
         <Statistics statistics={statistics} />
         
+        {/* NOUVEAU : Graphiques et Visualisations */}
+        <Charts transactions={transactions} />
+        
+        {/* Formulaire de nouvelle transaction */}
         {showForm && (
           <TransactionForm
             clients={clients}
@@ -97,18 +104,21 @@ export default function App() {
           />
         )}
 
+        {/* Barre de filtres */}
         <FilterBar 
           filter={filter} 
           setFilter={setFilter} 
           count={filteredTransactions.length} 
         />
 
+        {/* Liste des transactions */}
         <TransactionList 
           transactions={filteredTransactions}
           onSelectTransaction={setSelectedTransaction}
         />
       </div>
 
+      {/* Modal de détails de transaction */}
       {selectedTransaction && (
         <TransactionDetail
           transaction={selectedTransaction}
