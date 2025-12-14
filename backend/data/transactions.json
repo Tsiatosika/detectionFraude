@@ -81,5 +81,99 @@
         "points": 25
       }
     ]
+  },
+  {
+    "id": "TXN005",
+    "client_id": "C003",
+    "montant": 300,
+    "date": "2025-12-11",
+    "heure": "14:01",
+    "lieu": "Marseille",
+    "pays": "France",
+    "type": "Transport",
+    "marchand": "Puma",
+    "status": "normal",
+    "score": 0,
+    "rules": []
+  },
+  {
+    "id": "TXN006",
+    "client_id": "C001",
+    "montant": 6000,
+    "date": "2025-12-11",
+    "heure": "14:05",
+    "lieu": "PP",
+    "pays": "France",
+    "type": "Santé",
+    "marchand": "u",
+    "status": "frauduleux",
+    "score": 70,
+    "rules": [
+      {
+        "name": "Montant élevé",
+        "description": "6000€ > 360.00€ (3x moyenne)",
+        "points": 30
+      },
+      {
+        "name": "Lieu inhabituel",
+        "description": "Transaction à PP (lieux habituels: Paris, Lyon)",
+        "points": 15
+      },
+      {
+        "name": "Dépassement limite",
+        "description": "6000€ dépasse la limite habituelle de 500€",
+        "points": 25
+      }
+    ]
+  },
+  {
+    "id": "TXN007",
+    "client_id": "C002",
+    "montant": 350,
+    "date": "2025-12-11",
+    "heure": "14:06",
+    "lieu": "paris",
+    "pays": "France",
+    "type": "Achat en ligne",
+    "marchand": "Nike",
+    "status": "frauduleux",
+    "score": 70,
+    "rules": [
+      {
+        "name": "Montant élevé",
+        "description": "350€ > 255.00€ (3x moyenne)",
+        "points": 30
+      },
+      {
+        "name": "Lieu inhabituel",
+        "description": "Transaction à paris (lieux habituels: Lyon, Grenoble)",
+        "points": 15
+      },
+      {
+        "name": "Dépassement limite",
+        "description": "350€ dépasse la limite habituelle de 300€",
+        "points": 25
+      }
+    ]
+  },
+  {
+    "id": "TXN008",
+    "client_id": "C001",
+    "montant": 26,
+    "date": "2025-12-14",
+    "heure": "14:34",
+    "lieu": "Pagie",
+    "pays": "France",
+    "type": "Achat en ligne",
+    "marchand": "Amazon",
+    "status": "normal",
+    "score": 15,
+    "rules": [
+      {
+        "name": "Lieu inhabituel",
+        "description": "Transaction à Pagie (lieux habituels: Paris, Lyon)",
+        "points": 15
+      }
+    ]
   }
 ]
